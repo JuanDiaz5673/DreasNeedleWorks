@@ -1206,6 +1206,38 @@
     });
   }
 
+  // Contact form (AJAX submit to stay on page)
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.cta-btn');
+    btn.disabled = true;
+    btn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        btn.textContent = currentLang === 'es' ? '\u00A1Mensaje enviado!' : 'Message sent!';
+        form.reset();
+      } else {
+        btn.textContent = currentLang === 'es' ? 'Error, intenta de nuevo' : 'Error, try again';
+      }
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+        btn.disabled = false;
+      }, 3000);
+    }).catch(() => {
+      btn.textContent = currentLang === 'es' ? 'Error, intenta de nuevo' : 'Error, try again';
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+        btn.disabled = false;
+      }, 3000);
+    });
+  });
+
   // Language toggle
   document.querySelector('.lang-toggle').addEventListener('click', () => {
     setLanguage(currentLang === 'en' ? 'es' : 'en');
