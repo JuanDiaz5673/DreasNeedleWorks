@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drea's Needleworks</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpeg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -531,17 +532,17 @@
     color: var(--warm-gray);
   }
 
-  /* ============ CTA BANNER ============ */
-  .cta-section {
+  /* ============ CONTACT SECTION ============ */
+  .contact-section {
     padding: 5rem 3rem;
     text-align: center;
-    background: 
+    background:
       radial-gradient(ellipse at 30% 50%, rgba(232, 196, 196, 0.12) 0%, transparent 50%),
       radial-gradient(ellipse at 70% 50%, rgba(168, 149, 133, 0.08) 0%, transparent 50%),
       var(--cream);
   }
 
-  .cta-section h2 {
+  .contact-section h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
     font-weight: 300;
@@ -549,16 +550,71 @@
     margin-bottom: 1rem;
   }
 
-  .cta-section p {
+  .contact-section > p {
     font-size: 0.9rem;
     color: var(--taupe);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-weight: 300;
+  }
+
+  .contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .contact-form label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe-dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(168, 149, 133, 0.3);
+    background: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--pink-accent);
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form .form-group {
+    display: flex;
+    flex-direction: column;
   }
 
   .cta-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.6rem;
     padding: 1rem 3rem;
     background: var(--charcoal);
@@ -569,15 +625,45 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     border: none;
     text-decoration: none;
+    width: 100%;
+    margin-top: 0.5rem;
   }
 
   .cta-btn:hover {
     background: var(--taupe-dark);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(58, 51, 48, 0.2);
+  }
+
+  .cta-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .cta-btn:focus-visible {
+    outline: 2px solid var(--pink-accent);
+    outline-offset: 2px;
+  }
+
+  .contact-instagram {
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    color: var(--taupe);
+    font-weight: 300;
+  }
+
+  .contact-instagram a {
+    color: var(--taupe-dark);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+
+  .contact-instagram a:hover {
+    color: var(--charcoal);
   }
 
   /* ============ FOOTER ============ */
@@ -589,7 +675,7 @@
 
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 3rem;
     max-width: 1100px;
     margin: 0 auto 3rem;
@@ -800,8 +886,8 @@
     .testimonial-section { padding: 3.5rem 1.5rem; }
     .testimonial-text { font-size: 1.3rem; }
 
-    .cta-section { padding: 3.5rem 1.5rem; }
-    .cta-section h2 { font-size: 2.2rem; }
+    .contact-section { padding: 3.5rem 1.5rem; }
+    .contact-section h2 { font-size: 2.2rem; }
 
     .footer-content { grid-template-columns: 1fr 1fr; }
     footer { padding: 3rem 1.5rem 2rem; }
@@ -827,8 +913,8 @@
     .testimonial-section { padding: 3rem 1.2rem; }
     .testimonial-text { font-size: 1.15rem; line-height: 1.7; }
 
-    .cta-section { padding: 3rem 1.2rem; }
-    .cta-section h2 { font-size: 1.8rem; }
+    .contact-section { padding: 3rem 1.2rem; }
+    .contact-section h2 { font-size: 1.8rem; }
     .cta-btn { padding: 0.9rem 2rem; }
 
     .footer-content { grid-template-columns: 1fr; gap: 2rem; }
@@ -854,7 +940,6 @@
     </button>
   </div>
   <ul class="nav-links">
-    <li><a href="#shop" data-i18n="nav.shop">Shop</a></li>
     <li><a href="#services" data-i18n="nav.services">Services</a></li>
     <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
     <li><a href="#about" data-i18n="nav.about">About</a></li>
@@ -870,7 +955,7 @@
   </div>
   <h1 class="hero-title">Drea's Needleworks</h1>
   <p class="hero-subtitle" data-i18n="hero.subtitle">Handcrafted with love &middot; Stitch by stitch</p>
-  <a href="#shop" class="hero-cta" data-i18n="hero.cta">
+  <a href="#contact" class="hero-cta" data-i18n="hero.cta">
     Explore the Collection
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
@@ -960,11 +1045,26 @@
 
 <div class="stitch-divider"></div>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
   <h2 class="reveal" data-i18n="cta.title">Let's Create Something Beautiful</h2>
   <p class="reveal" data-i18n="cta.subtitle">Custom orders welcome — reach out to discuss your perfect piece.</p>
-  <a href="#" class="cta-btn reveal" data-i18n="cta.button">Get in Touch</a>
+  <form class="contact-form reveal" id="contact-form">
+    <div class="form-group">
+      <label for="contact-name" data-i18n="form.name.label">Name</label>
+      <input type="text" id="contact-name" name="name" data-i18n-placeholder="form.name.placeholder" placeholder="Your name" required>
+    </div>
+    <div class="form-group">
+      <label for="contact-email" data-i18n="form.email.label">Email</label>
+      <input type="email" id="contact-email" name="email" data-i18n-placeholder="form.email.placeholder" placeholder="Your email" required>
+    </div>
+    <div class="form-group">
+      <label for="contact-message" data-i18n="form.message.label">Message</label>
+      <textarea id="contact-message" name="message" data-i18n-placeholder="form.message.placeholder" placeholder="Tell us about your project..." required></textarea>
+    </div>
+    <button type="submit" class="cta-btn" data-i18n="form.submit">Send Message</button>
+  </form>
+  <p class="contact-instagram reveal" data-i18n="form.instagram">Or find us on Instagram: <a href="https://instagram.com/dreasneedleworks" target="_blank" rel="noopener">@dreasneedleworks</a></p>
 </section>
 
 <div class="stitch-divider"></div>
@@ -977,25 +1077,15 @@
       <p data-i18n="footer.tagline">Handcrafted embroidery, bows, and heirloom pieces — made with love, one stitch at a time.</p>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="nav.shop">Shop</h4>
-      <a href="#" data-i18n="footer.bows">Bows</a>
-      <a href="#" data-i18n="footer.embroidery">Embroidery</a>
-      <a href="#" data-i18n="footer.gifts">Gifts</a>
-      <a href="#" data-i18n="footer.custom">Custom Orders</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="footer.company">Company</h4>
-      <a href="#" data-i18n="nav.about">About</a>
-      <a href="#" data-i18n="nav.gallery">Gallery</a>
-      <a href="#" data-i18n="footer.faq">FAQ</a>
-      <a href="#" data-i18n="footer.shipping">Shipping</a>
+      <h4 data-i18n="footer.explore">Explore</h4>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
     <div class="footer-col">
       <h4 data-i18n="footer.connect">Connect</h4>
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">Pinterest</a>
-      <a href="#">Email</a>
+      <a href="https://instagram.com/dreasneedleworks" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1007,7 +1097,6 @@
   // ============ TRANSLATIONS ============
   const translations = {
     en: {
-      'nav.shop': 'Shop',
       'nav.services': 'Services',
       'nav.gallery': 'Gallery',
       'nav.about': 'About',
@@ -1032,20 +1121,20 @@
       'testimonial.author': '\u2014 Happy Customer',
       'cta.title': 'Let\u2019s Create Something Beautiful',
       'cta.subtitle': 'Custom orders welcome \u2014 reach out to discuss your perfect piece.',
-      'cta.button': 'Get in Touch',
+      'form.name.label': 'Name',
+      'form.name.placeholder': 'Your name',
+      'form.email.label': 'Email',
+      'form.email.placeholder': 'Your email',
+      'form.message.label': 'Message',
+      'form.message.placeholder': 'Tell us about your project...',
+      'form.submit': 'Send Message',
+      'form.instagram': 'Or find us on Instagram: <a href="https://instagram.com/dreasneedleworks" target="_blank" rel="noopener">@dreasneedleworks</a>',
       'footer.tagline': 'Handcrafted embroidery, bows, and heirloom pieces \u2014 made with love, one stitch at a time.',
-      'footer.bows': 'Bows',
-      'footer.embroidery': 'Embroidery',
-      'footer.gifts': 'Gifts',
-      'footer.custom': 'Custom Orders',
-      'footer.company': 'Company',
-      'footer.faq': 'FAQ',
-      'footer.shipping': 'Shipping',
+      'footer.explore': 'Explore',
       'footer.connect': 'Connect',
       'footer.copyright': '\u00A9 2026 Drea\u2019s Needleworks. All rights reserved.'
     },
     es: {
-      'nav.shop': 'Tienda',
       'nav.services': 'Servicios',
       'nav.gallery': 'Galer\u00EDa',
       'nav.about': 'Nosotros',
@@ -1070,15 +1159,16 @@
       'testimonial.author': '\u2014 Cliente Satisfecha',
       'cta.title': 'Creemos Algo Hermoso',
       'cta.subtitle': 'Pedidos personalizados bienvenidos \u2014 cont\u00E1ctanos para crear tu pieza perfecta.',
-      'cta.button': 'Cont\u00E1ctanos',
+      'form.name.label': 'Nombre',
+      'form.name.placeholder': 'Tu nombre',
+      'form.email.label': 'Correo electr\u00F3nico',
+      'form.email.placeholder': 'Tu correo electr\u00F3nico',
+      'form.message.label': 'Mensaje',
+      'form.message.placeholder': 'Cu\u00E9ntanos sobre tu proyecto...',
+      'form.submit': 'Enviar Mensaje',
+      'form.instagram': 'O enc\u00FAentranos en Instagram: <a href="https://instagram.com/dreasneedleworks" target="_blank" rel="noopener">@dreasneedleworks</a>',
       'footer.tagline': 'Bordados artesanales, lazos y piezas de herencia \u2014 hechos con amor, puntada a puntada.',
-      'footer.bows': 'Lazos',
-      'footer.embroidery': 'Bordado',
-      'footer.gifts': 'Regalos',
-      'footer.custom': 'Pedidos Personalizados',
-      'footer.company': 'Empresa',
-      'footer.faq': 'Preguntas Frecuentes',
-      'footer.shipping': 'Env\u00EDos',
+      'footer.explore': 'Explorar',
       'footer.connect': 'Conectar',
       'footer.copyright': '\u00A9 2026 Drea\u2019s Needleworks. Todos los derechos reservados.'
     }
@@ -1099,6 +1189,11 @@
         if (svg) el.appendChild(document.createTextNode(' ')) && el.appendChild(svg);
       }
     });
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (strings[key]) el.placeholder = strings[key];
+    });
     // Update toggle state
     const toggle = document.querySelector('.lang-toggle');
     toggle.classList.toggle('es', lang === 'es');
@@ -1106,6 +1201,20 @@
       opt.classList.toggle('active', opt.dataset.lang === lang);
     });
   }
+
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.cta-btn');
+    const msg = currentLang === 'es' ? '\u00A1Mensaje enviado! Nos pondremos en contacto pronto.' : 'Message sent! We\u2019ll be in touch soon.';
+    btn.textContent = msg;
+    btn.disabled = true;
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+      btn.disabled = false;
+    }, 3000);
+  });
 
   // Language toggle
   document.querySelector('.lang-toggle').addEventListener('click', () => {
