@@ -653,18 +653,122 @@
     transform: translateY(0);
   }
 
+  /* ============ HAMBURGER MENU ============ */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--taupe-dark);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4.5px, 4.5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4.5px, -4.5px);
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 768px) {
-    .hero-title { font-size: 2.8rem; }
+    .hamburger { display: flex; }
+
+    nav {
+      padding: 0 1.5rem;
+    }
+
+    nav .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(253, 248, 245, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      border-bottom: 1px solid rgba(168, 149, 133, 0.15);
+    }
+
+    nav .nav-links.open {
+      display: flex;
+    }
+
+    nav .nav-links a {
+      font-size: 0.82rem;
+    }
+
+    .hero { padding: 5rem 1.5rem 3rem; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 0.75rem; letter-spacing: 0.25em; }
+    .bow-container .bow-img { width: 280px; }
+
+    .section { padding: 4rem 1.5rem; }
+    .section-title { font-size: 2.2rem; margin-bottom: 2.5rem; }
     .services-grid { grid-template-columns: 1fr; }
+
+    .gallery-section { padding: 4rem 1.5rem; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-item:nth-child(2) { grid-row: auto; aspect-ratio: 1; }
-    .about-section { flex-direction: column; gap: 2.5rem; padding: 4rem 2rem; }
-    .about-image { width: 100%; min-height: 300px; }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: auto; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(4) { grid-column: auto; }
+
+    .about-section { flex-direction: column; gap: 2.5rem; padding: 4rem 1.5rem; }
+    .about-image { width: 100%; min-height: 280px; }
+    .about-content h2 { font-size: 2rem; }
+    .about-content .section-label { text-align: center; }
+
+    .testimonial-section { padding: 3.5rem 1.5rem; }
+    .testimonial-text { font-size: 1.3rem; }
+
+    .cta-section { padding: 3.5rem 1.5rem; }
+    .cta-section h2 { font-size: 2.2rem; }
+
     .footer-content { grid-template-columns: 1fr 1fr; }
-    nav { padding: 0 1.5rem; }
-    nav .nav-links { gap: 1.2rem; }
-    nav .nav-links a { font-size: 0.7rem; }
+    footer { padding: 3rem 1.5rem 2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 2rem; }
+    .bow-container .bow-img { width: 220px; }
+
+    .section { padding: 3rem 1.2rem; }
+    .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+    .service-card { padding: 2rem 1.5rem; }
+
+    .gallery-section { padding: 3rem 1.2rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:nth-child(1) { grid-column: auto; aspect-ratio: 1; }
+
+    .about-section { padding: 3rem 1.2rem; }
+    .about-image { min-height: 250px; }
+    .about-content h2 { font-size: 1.8rem; }
+
+    .testimonial-section { padding: 3rem 1.2rem; }
+    .testimonial-text { font-size: 1.15rem; line-height: 1.7; }
+
+    .cta-section { padding: 3rem 1.2rem; }
+    .cta-section h2 { font-size: 1.8rem; }
+    .cta-btn { padding: 0.9rem 2rem; }
+
+    .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 2.5rem 1.2rem 1.5rem; }
   }
 </style>
 </head>
@@ -673,6 +777,11 @@
 <!-- NAV -->
 <nav>
   <div class="nav-left">Drea's Needleworks</div>
+  <button class="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#services">Services</a></li>
@@ -824,6 +933,25 @@
 </footer>
 
 <script>
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a nav link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
