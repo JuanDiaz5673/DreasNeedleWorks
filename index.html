@@ -1122,13 +1122,13 @@
   <p class="section-label reveal" data-i18n="gallery.label">Portfolio</p>
   <h2 class="section-title reveal" data-i18n="gallery.title">Recent Work</h2>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="images/basket-alaric.jpeg" alt="Personalized Easter basket with blue gingham liner - Alaric"></div>
-    <div class="gallery-item reveal"><img src="images/basket-eli.jpeg" alt="Personalized Easter basket with tan gingham liner - Eli"></div>
-    <div class="gallery-item reveal"><img src="images/bunny-leilani.jpeg" alt="Personalized plush bunny - Leilani"></div>
-    <div class="gallery-item reveal"><img src="images/basket-hadassah.jpeg" alt="Easter basket set with bunny and yellow gingham - Hadassah"></div>
-    <div class="gallery-item reveal"><img src="images/basket-micah.jpeg" alt="Easter basket set with bunny and green gingham - Micah"></div>
-    <div class="gallery-item reveal"><img src="images/bow-closeup.jpeg" alt="Close-up embroidered bow with bunny monogram"></div>
-    <div class="gallery-item reveal"><img src="images/basket-ava.jpeg" alt="Easter basket with embroidered bow - Ava"></div>
+    <div class="gallery-item reveal"><img src="images/basket-alaric.jpeg" alt="Personalized Easter basket with blue gingham liner - Alaric" data-i18n-alt="gallery.alt.1"></div>
+    <div class="gallery-item reveal"><img src="images/basket-eli.jpeg" alt="Personalized Easter basket with tan gingham liner - Eli" data-i18n-alt="gallery.alt.2"></div>
+    <div class="gallery-item reveal"><img src="images/bunny-leilani.jpeg" alt="Personalized plush bunny - Leilani" data-i18n-alt="gallery.alt.3"></div>
+    <div class="gallery-item reveal"><img src="images/basket-hadassah.jpeg" alt="Easter basket set with bunny and yellow gingham - Hadassah" data-i18n-alt="gallery.alt.4"></div>
+    <div class="gallery-item reveal"><img src="images/basket-micah.jpeg" alt="Easter basket set with bunny and green gingham - Micah" data-i18n-alt="gallery.alt.5"></div>
+    <div class="gallery-item reveal"><img src="images/bow-closeup.jpeg" alt="Close-up embroidered bow with bunny monogram" data-i18n-alt="gallery.alt.6"></div>
+    <div class="gallery-item reveal"><img src="images/basket-ava.jpeg" alt="Easter basket with embroidered bow - Ava" data-i18n-alt="gallery.alt.7"></div>
   </div>
 </section>
 
@@ -1243,6 +1243,13 @@
       'services.occasions.desc': 'Wedding accessories, baby gifts, and heirloom pieces created to celebrate life\u2019s sweetest moments.',
       'gallery.label': 'Portfolio',
       'gallery.title': 'Recent Work',
+      'gallery.alt.1': 'Personalized Easter basket with blue gingham liner - Alaric',
+      'gallery.alt.2': 'Personalized Easter basket with tan gingham liner - Eli',
+      'gallery.alt.3': 'Personalized plush bunny - Leilani',
+      'gallery.alt.4': 'Easter basket set with bunny and yellow gingham - Hadassah',
+      'gallery.alt.5': 'Easter basket set with bunny and green gingham - Micah',
+      'gallery.alt.6': 'Close-up embroidered bow with bunny monogram',
+      'gallery.alt.7': 'Easter basket with embroidered bow - Ava',
       'about.label': 'Our Story',
       'about.title': 'Every Thread<br>Tells a Story',
       'about.p1': 'What began as a passion for creating beautiful, one-of-a-kind pieces has grown into a labor of love. At Drea\u2019s Needleworks, every item is crafted by hand with care, patience, and an eye for detail that only comes from truly loving the art of needlework.',
@@ -1281,6 +1288,13 @@
       'services.occasions.desc': 'Accesorios de boda, regalos para beb\u00E9s y piezas de herencia creadas para celebrar los momentos m\u00E1s dulces de la vida.',
       'gallery.label': 'Portafolio',
       'gallery.title': 'Trabajos Recientes',
+      'gallery.alt.1': 'Canasta de Pascua personalizada con forro de cuadros azules - Alaric',
+      'gallery.alt.2': 'Canasta de Pascua personalizada con forro de cuadros beige - Eli',
+      'gallery.alt.3': 'Conejito de peluche personalizado - Leilani',
+      'gallery.alt.4': 'Set de canasta de Pascua con conejito y cuadros amarillos - Hadassah',
+      'gallery.alt.5': 'Set de canasta de Pascua con conejito y cuadros verdes - Micah',
+      'gallery.alt.6': 'Lazo bordado con monograma de conejito',
+      'gallery.alt.7': 'Canasta de Pascua con lazo bordado - Ava',
       'about.label': 'Nuestra Historia',
       'about.title': 'Cada Hilo<br>Cuenta una Historia',
       'about.p1': 'Lo que comenz\u00F3 como una pasi\u00F3n por crear piezas hermosas y \u00FAnicas se ha convertido en un trabajo de amor. En Drea\u2019s Needleworks, cada art\u00EDculo est\u00E1 hecho a mano con cuidado, paciencia y un ojo para el detalle que solo viene de amar verdaderamente el arte de la costura.',
@@ -1323,6 +1337,11 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (strings[key]) el.placeholder = strings[key];
+    });
+    // Update alt attributes
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (strings[key]) el.alt = strings[key];
     });
     // Update toggle state
     const toggle = document.querySelector('.lang-toggle');
@@ -1397,8 +1416,10 @@
 
   function openLightbox(index) {
     currentIndex = index;
-    lightboxImg.src = galleryImages[index].src;
-    lightboxCaption.textContent = galleryImages[index].alt;
+    const img = galleryImages[index];
+    const key = img.getAttribute('data-i18n-alt');
+    lightboxImg.src = img.src;
+    lightboxCaption.textContent = (key && translations[currentLang][key]) || img.alt;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
