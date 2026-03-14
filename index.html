@@ -1049,7 +1049,11 @@
 <section class="contact-section" id="contact">
   <h2 class="reveal" data-i18n="cta.title">Let's Create Something Beautiful</h2>
   <p class="reveal" data-i18n="cta.subtitle">Custom orders welcome — reach out to discuss your perfect piece.</p>
-  <form class="contact-form reveal" id="contact-form">
+  <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/dreasneedleworks@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="New message from Drea's Needleworks website">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none">
     <div class="form-group">
       <label for="contact-name" data-i18n="form.name.label">Name</label>
       <input type="text" id="contact-name" name="name" data-i18n-placeholder="form.name.placeholder" placeholder="Your name" required>
@@ -1201,20 +1205,6 @@
       opt.classList.toggle('active', opt.dataset.lang === lang);
     });
   }
-
-  // Contact form
-  document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('.cta-btn');
-    const msg = currentLang === 'es' ? '\u00A1Mensaje enviado! Nos pondremos en contacto pronto.' : 'Message sent! We\u2019ll be in touch soon.';
-    btn.textContent = msg;
-    btn.disabled = true;
-    e.target.reset();
-    setTimeout(() => {
-      btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
-      btn.disabled = false;
-    }, 3000);
-  });
 
   // Language toggle
   document.querySelector('.lang-toggle').addEventListener('click', () => {
