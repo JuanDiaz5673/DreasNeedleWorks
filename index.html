@@ -416,14 +416,20 @@
     transform: scale(1.06);
   }
 
-  /* Asymmetric layout — 7 images */
-  .gallery-item:nth-child(1) { grid-column: 1 / 7; grid-row: span 3; }
-  .gallery-item:nth-child(2) { grid-column: 7 / 10; grid-row: span 2; }
-  .gallery-item:nth-child(3) { grid-column: 10 / 13; grid-row: span 2; }
-  .gallery-item:nth-child(4) { grid-column: 7 / 13; grid-row: span 2; }
-  .gallery-item:nth-child(5) { grid-column: 1 / 5; grid-row: span 2; }
-  .gallery-item:nth-child(6) { grid-column: 5 / 9; grid-row: span 2; }
-  .gallery-item:nth-child(7) { grid-column: 9 / 13; grid-row: span 2; }
+  /* Asymmetric layout — 13 images */
+  .gallery-item:nth-child(1)  { grid-column: 1 / 6;  grid-row: span 3; }
+  .gallery-item:nth-child(2)  { grid-column: 6 / 9;  grid-row: span 2; }
+  .gallery-item:nth-child(3)  { grid-column: 9 / 13; grid-row: span 2; }
+  .gallery-item:nth-child(4)  { grid-column: 6 / 13; grid-row: span 2; }
+  .gallery-item:nth-child(5)  { grid-column: 1 / 4;  grid-row: span 2; }
+  .gallery-item:nth-child(6)  { grid-column: 4 / 7;  grid-row: span 2; }
+  .gallery-item:nth-child(7)  { grid-column: 7 / 10; grid-row: span 2; }
+  .gallery-item:nth-child(8)  { grid-column: 10 / 13; grid-row: span 3; }
+  .gallery-item:nth-child(9)  { grid-column: 1 / 5;  grid-row: span 2; }
+  .gallery-item:nth-child(10) { grid-column: 5 / 10; grid-row: span 2; }
+  .gallery-item:nth-child(11) { grid-column: 1 / 4;  grid-row: span 2; }
+  .gallery-item:nth-child(12) { grid-column: 4 / 8;  grid-row: span 2; }
+  .gallery-item:nth-child(13) { grid-column: 8 / 13; grid-row: span 3; }
 
   /* ============ LIGHTBOX ============ */
   .lightbox {
@@ -977,13 +983,19 @@
       grid-template-columns: repeat(6, 1fr);
       grid-auto-rows: 120px;
     }
-    .gallery-item:nth-child(1) { grid-column: 1 / 4; grid-row: span 2; }
-    .gallery-item:nth-child(2) { grid-column: 4 / 7; grid-row: span 2; }
-    .gallery-item:nth-child(3) { grid-column: 1 / 3; grid-row: span 2; }
-    .gallery-item:nth-child(4) { grid-column: 3 / 7; grid-row: span 2; }
-    .gallery-item:nth-child(5) { grid-column: 1 / 3; grid-row: span 2; }
-    .gallery-item:nth-child(6) { grid-column: 3 / 5; grid-row: span 2; }
-    .gallery-item:nth-child(7) { grid-column: 5 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(1)  { grid-column: 1 / 4; grid-row: span 2; }
+    .gallery-item:nth-child(2)  { grid-column: 4 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(3)  { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(4)  { grid-column: 3 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(5)  { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(6)  { grid-column: 3 / 5; grid-row: span 2; }
+    .gallery-item:nth-child(7)  { grid-column: 5 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(8)  { grid-column: 1 / 4; grid-row: span 2; }
+    .gallery-item:nth-child(9)  { grid-column: 4 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(10) { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(11) { grid-column: 3 / 5; grid-row: span 2; }
+    .gallery-item:nth-child(12) { grid-column: 5 / 7; grid-row: span 2; }
+    .gallery-item:nth-child(13) { grid-column: 1 / 7; grid-row: span 2; }
     .lightbox-nav { display: none; }
 
     .about-section { flex-direction: column; gap: 2.5rem; padding: 4rem 1.5rem; }
@@ -1015,13 +1027,19 @@
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 140px;
     }
-    .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: span 2; }
-    .gallery-item:nth-child(2) { grid-column: auto; grid-row: span 1; }
-    .gallery-item:nth-child(3) { grid-column: auto; grid-row: span 1; }
-    .gallery-item:nth-child(4) { grid-column: 1 / 3; grid-row: span 2; }
-    .gallery-item:nth-child(5) { grid-column: auto; grid-row: span 1; }
-    .gallery-item:nth-child(6) { grid-column: auto; grid-row: span 1; }
-    .gallery-item:nth-child(7) { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(1)  { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(2)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(3)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(4)  { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(5)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(6)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(7)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(8)  { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(9)  { grid-column: 1 / 3; grid-row: span 2; }
+    .gallery-item:nth-child(10) { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(11) { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(12) { grid-column: auto; grid-row: span 1; }
+    .gallery-item:nth-child(13) { grid-column: auto; grid-row: span 1; }
 
     .about-section { padding: 3rem 1.2rem; }
     .about-image { min-height: 250px; }
@@ -1122,13 +1140,19 @@
   <p class="section-label reveal" data-i18n="gallery.label">Portfolio</p>
   <h2 class="section-title reveal" data-i18n="gallery.title">Recent Work</h2>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="images/basket-alaric.jpeg" alt="Personalized Easter basket with blue gingham liner - Alaric" data-i18n-alt="gallery.alt.1"></div>
-    <div class="gallery-item reveal"><img src="images/basket-eli.jpeg" alt="Personalized Easter basket with tan gingham liner - Eli" data-i18n-alt="gallery.alt.2"></div>
-    <div class="gallery-item reveal"><img src="images/bunny-leilani.jpeg" alt="Personalized plush bunny - Leilani" data-i18n-alt="gallery.alt.3"></div>
-    <div class="gallery-item reveal"><img src="images/basket-hadassah.jpeg" alt="Easter basket set with bunny and yellow gingham - Hadassah" data-i18n-alt="gallery.alt.4"></div>
-    <div class="gallery-item reveal"><img src="images/basket-micah.jpeg" alt="Easter basket set with bunny and green gingham - Micah" data-i18n-alt="gallery.alt.5"></div>
-    <div class="gallery-item reveal"><img src="images/bow-closeup.jpeg" alt="Close-up embroidered bow with bunny monogram" data-i18n-alt="gallery.alt.6"></div>
-    <div class="gallery-item reveal"><img src="images/basket-ava.jpeg" alt="Easter basket with embroidered bow - Ava" data-i18n-alt="gallery.alt.7"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7978.jpeg" alt="Easter basket with bunny and yellow gingham liner - Hadassah" data-i18n-alt="gallery.alt.1"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7979.jpeg" alt="Easter basket with bunny and green gingham liner - Micah" data-i18n-alt="gallery.alt.2"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7980.jpeg" alt="White seersucker bow with embroidered bunny monogram" data-i18n-alt="gallery.alt.3"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7981.jpeg" alt="Easter basket with embroidered bow and pink gingham - Ava" data-i18n-alt="gallery.alt.4"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7982.jpeg" alt="Easter basket with bunny and blue plaid liner - AJ" data-i18n-alt="gallery.alt.5"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7983.jpeg" alt="Easter basket with bunny and blue plaid liner - Waylon" data-i18n-alt="gallery.alt.6"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7984.jpeg" alt="Easter basket with bunny and green gingham liner - Jamey" data-i18n-alt="gallery.alt.7"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7985.jpeg" alt="Embroidered wreath bow with monogram and cross - He Is Risen" data-i18n-alt="gallery.alt.8"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7986.jpeg" alt="Easter basket with blue gingham liner - Alaric" data-i18n-alt="gallery.alt.9"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7987.jpeg" alt="Easter basket with tan gingham liner - Eli" data-i18n-alt="gallery.alt.10"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7988.jpeg" alt="Personalized plush bunny with embroidered ear - Leilani" data-i18n-alt="gallery.alt.11"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7989.jpeg" alt="Easter basket with bunny and yellow gingham - Hadassah" data-i18n-alt="gallery.alt.12"></div>
+    <div class="gallery-item reveal"><img src="images/IMG_7990.jpeg" alt="Easter basket with bunny and green gingham - Micah" data-i18n-alt="gallery.alt.13"></div>
   </div>
 </section>
 
@@ -1243,13 +1267,19 @@
       'services.occasions.desc': 'Wedding accessories, baby gifts, and heirloom pieces created to celebrate life\u2019s sweetest moments.',
       'gallery.label': 'Portfolio',
       'gallery.title': 'Recent Work',
-      'gallery.alt.1': 'Personalized Easter basket with blue gingham liner - Alaric',
-      'gallery.alt.2': 'Personalized Easter basket with tan gingham liner - Eli',
-      'gallery.alt.3': 'Personalized plush bunny - Leilani',
-      'gallery.alt.4': 'Easter basket set with bunny and yellow gingham - Hadassah',
-      'gallery.alt.5': 'Easter basket set with bunny and green gingham - Micah',
-      'gallery.alt.6': 'Close-up embroidered bow with bunny monogram',
-      'gallery.alt.7': 'Easter basket with embroidered bow - Ava',
+      'gallery.alt.1': 'Easter basket with bunny and yellow gingham liner - Hadassah',
+      'gallery.alt.2': 'Easter basket with bunny and green gingham liner - Micah',
+      'gallery.alt.3': 'White seersucker bow with embroidered bunny monogram',
+      'gallery.alt.4': 'Easter basket with embroidered bow and pink gingham - Ava',
+      'gallery.alt.5': 'Easter basket with bunny and blue plaid liner - AJ',
+      'gallery.alt.6': 'Easter basket with bunny and blue plaid liner - Waylon',
+      'gallery.alt.7': 'Easter basket with bunny and green gingham liner - Jamey',
+      'gallery.alt.8': 'Embroidered wreath bow with monogram and cross - He Is Risen',
+      'gallery.alt.9': 'Easter basket with blue gingham liner - Alaric',
+      'gallery.alt.10': 'Easter basket with tan gingham liner - Eli',
+      'gallery.alt.11': 'Personalized plush bunny with embroidered ear - Leilani',
+      'gallery.alt.12': 'Easter basket with bunny and yellow gingham - Hadassah',
+      'gallery.alt.13': 'Easter basket with bunny and green gingham - Micah',
       'about.label': 'Our Story',
       'about.title': 'Every Thread<br>Tells a Story',
       'about.p1': 'What began as a passion for creating beautiful, one-of-a-kind pieces has grown into a labor of love. At Drea\u2019s Needleworks, every item is crafted by hand with care, patience, and an eye for detail that only comes from truly loving the art of needlework.',
@@ -1288,13 +1318,19 @@
       'services.occasions.desc': 'Accesorios de boda, regalos para beb\u00E9s y piezas de herencia creadas para celebrar los momentos m\u00E1s dulces de la vida.',
       'gallery.label': 'Portafolio',
       'gallery.title': 'Trabajos Recientes',
-      'gallery.alt.1': 'Canasta de Pascua personalizada con forro de cuadros azules - Alaric',
-      'gallery.alt.2': 'Canasta de Pascua personalizada con forro de cuadros beige - Eli',
-      'gallery.alt.3': 'Conejito de peluche personalizado - Leilani',
-      'gallery.alt.4': 'Set de canasta de Pascua con conejito y cuadros amarillos - Hadassah',
-      'gallery.alt.5': 'Set de canasta de Pascua con conejito y cuadros verdes - Micah',
-      'gallery.alt.6': 'Lazo bordado con monograma de conejito',
-      'gallery.alt.7': 'Canasta de Pascua con lazo bordado - Ava',
+      'gallery.alt.1': 'Canasta de Pascua con conejito y forro de cuadros amarillos - Hadassah',
+      'gallery.alt.2': 'Canasta de Pascua con conejito y forro de cuadros verdes - Micah',
+      'gallery.alt.3': 'Lazo blanco de seersucker con monograma de conejito bordado',
+      'gallery.alt.4': 'Canasta de Pascua con lazo bordado y cuadros rosados - Ava',
+      'gallery.alt.5': 'Canasta de Pascua con conejito y forro de cuadros azules - AJ',
+      'gallery.alt.6': 'Canasta de Pascua con conejito y forro de cuadros azules - Waylon',
+      'gallery.alt.7': 'Canasta de Pascua con conejito y forro de cuadros verdes - Jamey',
+      'gallery.alt.8': 'Lazo de corona bordado con monograma y cruz - Ha Resucitado',
+      'gallery.alt.9': 'Canasta de Pascua con forro de cuadros azules - Alaric',
+      'gallery.alt.10': 'Canasta de Pascua con forro de cuadros beige - Eli',
+      'gallery.alt.11': 'Conejito de peluche personalizado con oreja bordada - Leilani',
+      'gallery.alt.12': 'Canasta de Pascua con conejito y cuadros amarillos - Hadassah',
+      'gallery.alt.13': 'Canasta de Pascua con conejito y cuadros verdes - Micah',
       'about.label': 'Nuestra Historia',
       'about.title': 'Cada Hilo<br>Cuenta una Historia',
       'about.p1': 'Lo que comenz\u00F3 como una pasi\u00F3n por crear piezas hermosas y \u00FAnicas se ha convertido en un trabajo de amor. En Drea\u2019s Needleworks, cada art\u00EDculo est\u00E1 hecho a mano con cuidado, paciencia y un ojo para el detalle que solo viene de amar verdaderamente el arte de la costura.',
