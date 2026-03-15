@@ -6,6 +6,7 @@
 <title>Drea's Needleworks</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <style>
   :root {
     --blush: #E8C4C4;
@@ -1216,6 +1217,7 @@
       <label for="contact-message" data-i18n="form.message.label">Message</label>
       <textarea id="contact-message" name="message" data-i18n-placeholder="form.message.placeholder" placeholder="Tell us about your project..." required></textarea>
     </div>
+    <div class="h-captcha" data-sitekey="e6a4b608-9e9e-45d0-936c-54265684b2e8" data-theme="light"></div>
     <button type="submit" class="cta-btn" data-i18n="form.submit">Send Message</button>
   </form>
   <p class="contact-instagram reveal" data-i18n="form.instagram">Or find us on Instagram: <a href="https://instagram.com/dreasneedleworks" target="_blank" rel="noopener">@dreasneedleworks</a></p>
@@ -1387,11 +1389,61 @@
     });
   }
 
+  // Anti-spam: timing check
+  const formLoadTime = Date.now();
+
+  // Anti-spam: rate limiting (max 3 submissions per 10 minutes)
+  const RATE_LIMIT_MAX = 3;
+  const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes
+
+  function checkRateLimit() {
+    const now = Date.now();
+    let submissions = JSON.parse(localStorage.getItem('cf_submissions') || '[]');
+    submissions = submissions.filter(t => now - t < RATE_LIMIT_WINDOW);
+    localStorage.setItem('cf_submissions', JSON.stringify(submissions));
+    return submissions.length < RATE_LIMIT_MAX;
+  }
+
+  function recordSubmission() {
+    const submissions = JSON.parse(localStorage.getItem('cf_submissions') || '[]');
+    submissions.push(Date.now());
+    localStorage.setItem('cf_submissions', JSON.stringify(submissions));
+  }
+
   // Contact form (AJAX submit to stay on page)
   document.getElementById('contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('.cta-btn');
+
+    // Timing check: reject if submitted in under 3 seconds
+    if (Date.now() - formLoadTime < 3000) {
+      btn.textContent = currentLang === 'es' ? 'Espere un momento...' : 'Please wait a moment...';
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+      }, 2000);
+      return;
+    }
+
+    // Rate limit check
+    if (!checkRateLimit()) {
+      btn.textContent = currentLang === 'es' ? 'Demasiados envíos, intente más tarde' : 'Too many submissions, try later';
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+      }, 3000);
+      return;
+    }
+
+    // hCaptcha validation
+    const hcaptchaResponse = document.querySelector('[name="h-captcha-response"]');
+    if (!hcaptchaResponse || !hcaptchaResponse.value) {
+      btn.textContent = currentLang === 'es' ? 'Complete el captcha primero' : 'Please complete the captcha';
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message';
+      }, 2000);
+      return;
+    }
+
     btn.disabled = true;
     btn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
 
@@ -1401,8 +1453,10 @@
       headers: { 'Accept': 'application/json' }
     }).then(res => {
       if (res.ok) {
-        btn.textContent = currentLang === 'es' ? '\u00A1Mensaje enviado!' : 'Message sent!';
+        btn.textContent = currentLang === 'es' ? '¡Mensaje enviado!' : 'Message sent!';
         form.reset();
+        recordSubmission();
+        if (typeof hcaptcha !== 'undefined') hcaptcha.reset();
       } else {
         btn.textContent = currentLang === 'es' ? 'Error, intenta de nuevo' : 'Error, try again';
       }
